@@ -49,11 +49,12 @@ if /cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM # Check if Windows OS
   end
 
   # Install Excel Plugin
-  appdata_path = Dir.home + '\\AppData\Roaming\Microsoft\AddIns'
+  username = Dir.home.split('/')[-1]
+  appdata_path = '\Users\\' + username + '\AppData\Roaming\Microsoft\AddIns'
   puts
   puts "Validating add-in directory: " + appdata_path
   sleep(0.2)
-  FileUtils.mkdir_p(appdata_path) unless Dir.exist?(appdata_path)
+  FileUtils.mkdir_p(appdata_path) unless !Dir.exist?(appdata_path)
   puts
   puts "Installing GiftAdminReports.xlam to " + appdata_path
   sleep(0.2)
