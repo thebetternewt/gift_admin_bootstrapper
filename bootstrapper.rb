@@ -54,6 +54,8 @@ if /cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM # Check if Windows OS
   puts "Validating add-in directory: " + appdata_path
   sleep(0.2)
   FileUtils.mkdir_p(appdata_path) unless Dir.exist?(appdata_path)
+  puts "Deleting..."
+  Dir.glob("#{appdata_path}\\*GiftAdmin*.xlam").each { |f| puts f }
   FileUtils.rm Dir.glob("#{appdata_path}\\*GiftAdmin*.xlam")
   puts
   puts "Installing GiftAdminReports.xlam to " + appdata_path
